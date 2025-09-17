@@ -1,0 +1,95 @@
+body { font-family: Arial, sans-serif; margin: 0; background:#f7f7f7; }
+.container {
+    width: 100%;
+    margin: 0 auto;
+    border: 2px solid #222;
+    display: grid;
+    grid-template-columns: 180px 1fr 180px;
+    grid-template-rows: 90px 60px 1fr 70px 80px;
+    grid-template-areas:
+    "header header header"
+    "left menu right"
+    "left main right"
+    "left main small"
+    "footer footer footer";
+    background: #fff;
+    height: 100vh;
+}
+
+.header { grid-area: header; background: #d6eaff; padding: 12px; position: relative; }
+.left   { grid-area: left; background: #ffeedd; padding: 12px; }
+.menu   { grid-area: menu; background: #eaf7e9; padding: 12px; }
+.right  { grid-area: right; background: #ffeedd; padding: 12px; }
+.main   { grid-area: main; background: #ffffff; padding: 20px; border-left: 1px solid #eee; border-right: 1px solid #eee; }
+.small  { grid-area: small; background: #eaf7e9; padding: 12px; align-self: center; text-align: center}
+.footer { grid-area: footer; background: #d6eaff; padding: 12px; position: relative; }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #d6eaff;
+    padding: 12px;
+}
+
+.header-left {
+    flex: 0 0 auto;
+}
+
+.header-right {
+    justify-content: right;
+    align-items: center;
+    text-align: right;
+    margin-left: 20px;
+}
+
+.xbox {
+    display: inline-block;
+    border: 2px solid #222;
+    background: #fff;
+    padding: 6px 10px;
+}
+.ybox { position: absolute; right: 20px; bottom: 18px; border: 2px solid #222; background: #fff; padding: 6px 10px; }
+
+.menu-inline {
+    display: inline-flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-inline li {
+    margin: 0;
+}
+
+.menu-inline a {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #cfefff;
+    border: 1px solid #b8e0ff;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #03366b;
+    font-weight: 600;
+}
+
+.menu-inline a:hover {
+    background: #aee0ff;
+    color: #000;
+}
+
+.menu-inline a.active {
+    background: #ffd68a;
+    border-color: #ffcc66;
+}
+
+ul, ol { margin: 10px 0 10px 20px; }
+img { max-width: 100%; height: auto; display:block; }
+
+@media (max-width: 920px) {
+    .container { width: 100%; grid-template-columns: 1fr; grid-template-areas:
+    "header" "menu" "left" "main" "right" "small" "footer"; grid-template-rows: auto; }
+    .xbox { left: 12px; top: 12px; }
+    .ybox { right: 12px; bottom: 12px; }
+}
