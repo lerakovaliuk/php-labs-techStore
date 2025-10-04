@@ -21,7 +21,7 @@ body { font-family: Arial, sans-serif; margin: 0; background:#f7f7f7; }
 .left   { grid-area: left; background: #ffeedd; padding: 12px; }
 .menu   { grid-area: menu; background: #eaf7e9; padding: 12px; }
 .right  { grid-area: right; background: #ffeedd; padding: 12px; }
-.main   { grid-area: main; background: #ffffff; padding: 20px; border-left: 1px solid #eee; border-right: 1px solid #eee; }
+.main   { grid-area: main; background: #ffffff; padding: 20px; border-left: 1px solid #eee; border-right: 1px solid #eee; position: relative;}
 .small  { grid-area: small; background: #eaf7e9; padding: 12px; align-self: center; text-align: center}
 .footer { grid-area: footer; background: #d6eaff; padding: 12px; position: relative; }
 
@@ -87,6 +87,28 @@ body { font-family: Arial, sans-serif; margin: 0; background:#f7f7f7; }
 
 ul, ol { margin: 10px 0 10px 20px; }
 img { max-width: 100%; height: auto; display:block; }
+
+#resetBtn {
+    position: absolute;      /* щоб зафіксувати у кутку main */
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #cfefff;
+    border: 1px solid #b8e0ff;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #03366b;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+#resetBtn:hover {
+    background: #aee0ff;
+    color: #000;
+}
 
 @media (max-width: 920px) {
     .container { width: 100%; grid-template-columns: 1fr; grid-template-areas:
