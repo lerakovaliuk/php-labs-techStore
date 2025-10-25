@@ -1,4 +1,15 @@
 <?php
+$start_time = microtime(true);
+include 'config.php';
+
+// Підтягуємо всі збережені дані з БД
+$page = 1; // якщо у тебе кілька сторінок — можна задати унікальний номер
+$data = [];
+
+$result = $conn->query("SELECT * FROM editable_content WHERE page = '$page'");
+while ($row = $result->fetch_assoc()) {
+    $data[$row['element_id']] = $row['content'];
+}
 
 require_once __DIR__ . '/config.php';
 if (!isset($currentPage)) $currentPage = 1;
@@ -122,5 +133,11 @@ $pageTitle = isset($menu[$self]) ? $menu[$self] : ("Сторінка $currentPag
     </div>
 </div>
 <script src="script.js"></script>
+<?php
+$end_time = microtime(true);
+$php_time = $end_time - $start_time;
+echo "<script>console.log('⏱ PHP генерація сторінки: " . round($php_time * 1000, 2) . " мс');</script>";
+$conn->close();
+?>
 </body>
 </html>
