@@ -127,7 +127,7 @@ $pageTitle = isset($menu[$self]) ? $menu[$self] : ("Сторінка $currentPag
         <div class="ybox"><?= htmlspecialchars($y) ?></div>
     </div>
 </div>
-<<<<<<< HEAD
+
 <script src="script.js"></script>
 <?php
 $end_time = microtime(true);
@@ -135,7 +135,6 @@ $php_time = $end_time - $start_time;
 echo "<script>console.log('⏱ PHP генерація сторінки: " . round($php_time * 1000, 2) . " мс');</script>";
 $conn->close();
 ?>
-=======
->>>>>>> parent of ee2266a (ЛР2 робота з local storage)
+
 </body>
 </html>
