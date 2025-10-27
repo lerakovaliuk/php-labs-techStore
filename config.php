@@ -1,14 +1,4 @@
 <?php
-$host = "localhost";
-$user = "root";      // стандартний користувач XAMPP
-$pass = "";          // пароль порожній, якщо ти не міняв
-$dbname = "techstore_db";
-
-$conn = new mysqli($host, $user, $pass, $dbname);
-if ($conn->connect_error) {
-    die("Помилка з'єднання з базою даних: " . $conn->connect_error);
-}
-
 $menu = [
     "index.php" => "Головна",
     "page2.php" => "Каталог",
