@@ -33,27 +33,27 @@ $pageTitle = isset($menu[$self]) ? $menu[$self] : ("Сторінка $currentPag
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><?= htmlspecialchars($x) ?> — <?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="style.css?v=<?= filemtime('style.css') ?>">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <div class="header">
         <div class="header-left">
-            <div class="xbox" id="xbox" data-editable><?= htmlspecialchars($x) ?></div>
+            <div class="xbox"><?= htmlspecialchars($x) ?></div>
         </div>
         <div class="header-right">
-            <h2 id="slogan" data-editable>Number one по домашнім гаджетам!</h2>
-            <p id="welcome" data-editable><?= htmlspecialchars($texts[1]) ?></p>
+            <h2>Number one по домашнім гаджетам!</h2>
+            <p><?= htmlspecialchars($texts[1]) ?></p>
         </div>
     </div>
 
     <div class="left">
-        <h3 id="annTitle" data-editable>Оголошення</h3>
-        <p id="announcements" data-editable><?= htmlspecialchars($texts[2]) ?></p>
+        <h3>Оголошення</h3>
+        <p><?= htmlspecialchars($texts[2]) ?></p>
     </div>
 
     <div class="menu">
-        <h3 id="menuTitle" data-editable style="display:inline; margin-right:10px;">Меню:</h3>
+        <h3 style="display:inline; margin-right:10px;">Меню:</h3>
         <ul class="menu-inline">
             <?php foreach ($menu as $link => $label):
                 $active = (basename($_SERVER['PHP_SELF']) === $link) ? 'active' : '';
@@ -64,30 +64,26 @@ $pageTitle = isset($menu[$self]) ? $menu[$self] : ("Сторінка $currentPag
     </div>
 
     <div class="right">
-        <h3 id="scheduleTitle" data-editable>Графік</h3>
-        <p id="schedule" data-editable><?= htmlspecialchars($texts[4]) ?></p>
+        <h3>Графік</h3>
+        <p><?= htmlspecialchars($texts[4]) ?></p>
     </div>
 
     <div class="main">
-        <h2 id="pageTitle" data-editable>TechStore — <?= htmlspecialchars($pageTitle) ?></h2>
+        <h2>TechStore — <?= htmlspecialchars($pageTitle) ?></h2>
         <?php
         // Контент, що змінюється залежно від сторінки:
         switch ($currentPage) {
             case 2:
-                echo "<h3 id='ulTitle' data-editable>Приклад ненумерованого списку (UL)</h3><ul>";
-                foreach ($lists['ul'] as $i => $li) {
-                    echo '<li id="ul-item-' . $i . '" data-editable>' . htmlspecialchars($li) . '</li>';
-                }
+                echo "<h3>Приклад ненумерованого списку (UL)</h3><ul>";
+                foreach ($lists['ul'] as $li) echo "<li>" . htmlspecialchars($li) . "</li>";
                 echo "</ul>";
-                echo "<h3 id='olTitle' data-editable>Приклад нумерованого списку (OL)</h3><ol>";
-                foreach ($lists['ol'] as $i => $li) {
-                    echo '<li id="ol-item-' . $i . '" data-editable>' . htmlspecialchars($li) . '</li>';
-                }
+                echo "<h3>Приклад нумерованого списку (OL)</h3><ol>";
+                foreach ($lists['ol'] as $li) echo "<li>" . htmlspecialchars($li) . "</li>";
                 echo "</ol>";
                 break;
 
             case 3:
-                echo "<p id='mapIntro' data-editable>Натисни на зони картинки, щоб перейти на відповідні сторінки (приклад MAP):</p>";
+                echo "<p>Натисни на зони картинки, щоб перейти на відповідні сторінки (приклад MAP):</p>";
                 if ($image_url !== '') {
                     echo '<img src="' . htmlspecialchars($image_url) . '" usemap="#sitemap" alt="Map image">';
                     echo '<map name="sitemap">';
@@ -104,34 +100,34 @@ $pageTitle = isset($menu[$self]) ? $menu[$self] : ("Сторінка $currentPag
                 break;
 
             case 4:
-                echo "<h3 id='linksTitle' data-editable>Приклади посилань (A)</h3><p id='innerLinksIntro' data-editable>Внутрішні посилання з масиву меню:</p><ul>";
+                echo "<h3>Приклади посилань (A)</h3><p>Внутрішні посилання з масиву меню:</p><ul>";
                 foreach ($menu as $link => $label) {
-                    echo '<li><a href="' . $link . '" id="link-' . $link . '" data-editable>' . htmlspecialchars($label) . '</a></li>';
+                    echo '<li><a href="' . $link . '">' . htmlspecialchars($label) . '</a></li>';
                 }
                 echo "</ul>";
-                echo '<p id="outerLink" data-editable>Зовнішнє посилання: <a href="https://example.com" target="_blank" rel="noopener">Example.com</a></p>';
+                echo '<p>Зовнішнє посилання: <a href="https://example.com" target="_blank" rel="noopener">Example.com</a></p>';
                 break;
 
             case 5:
             default:
-                echo "<p id='aboutText' data-editable>" . nl2br(htmlspecialchars($texts[5])) . "</p>";
-                echo "<p id='extraText' data-editable>Тут ви знайдете товари на будь-який смак, просто приходь і обирай, бо у нас найкращі умови!</p>";
+                echo "<p>" . nl2br(htmlspecialchars($texts[5])) . "</p>";
+                echo "<p>Тут можна вставити додаткові елементи: форму, галерею, відео і т.д.</p>";
                 break;
         }
         ?>
-        <button id="resetBtn">Скинути зміни</button>
     </div>
 
     <div class="small">
-        <h4 id="promo" data-editable>Чекаємо вас у наших магазинах!</h4>
+        <h4>Чекаємо вас у наших магазинах!</h4>
 <!--        <p>--><?php //= htmlspecialchars($texts[6]) ?><!--</p>-->
     </div>
 
     <div class="footer">
-        <p id="footerText" data-editable><?= htmlspecialchars($texts[7]) ?></p>
-        <div class="ybox" id="ybox" data-editable><?= htmlspecialchars($y) ?></div>
+        <p><?= htmlspecialchars($texts[7]) ?></p>
+        <div class="ybox"><?= htmlspecialchars($y) ?></div>
     </div>
 </div>
+<<<<<<< HEAD
 <script src="script.js"></script>
 <?php
 $end_time = microtime(true);
@@ -139,5 +135,7 @@ $php_time = $end_time - $start_time;
 echo "<script>console.log('⏱ PHP генерація сторінки: " . round($php_time * 1000, 2) . " мс');</script>";
 $conn->close();
 ?>
+=======
+>>>>>>> parent of ee2266a (ЛР2 робота з local storage)
 </body>
 </html>
