@@ -1,12 +1,4 @@
 <?php
-// Початок вимірювання часу генерації сторінки
-$page_start_time = microtime(true);
-
-require_once __DIR__ . '/db.php';
-
-// Оголошення глобальних змінних для часу
-$db_query_time = 0;
-$total_php_time = 0;
 
 $menu = [
     "index.php" => "Головна",
@@ -14,9 +6,13 @@ $menu = [
     "page3.php" => "Галерея",
     "page4.php" => "Контакти",
     "page5.php" => "Про нас",
+    "page_creator.php" => "Створити Toasts", // ДОДАНО
+    "page_viewer.php" => "Переглянути Toasts", // ДОДАНО
 ];
+
 $x = "TechStore – магазин сучасної техніки";
 $y = "Телефон: +380 67 123 45 67";
+
 $texts = [
     1 => "Ласкаво просимо до TechStore! У нас ви знайдете ноутбуки, смартфони, планшети та іншу електроніку від провідних світових виробників.",
     2 => "Акція тижня: знижки до 30% на ноутбуки Lenovo!\n\n Спеціальна пропозиція: навушники у подарунок при купівлі смартфону Samsung.",
@@ -26,27 +22,15 @@ $texts = [
     6 => "Новини:\n– Відкрито новий магазин у Львові.\n– Надійшли в продаж нові моделі iPhone.\n– Знижки до Чорної п’ятниці!",
     7 => "© 2025 TechStore. Усі права захищені.",
 ];
+
 $lists = [
     'ul' => ['Ноутбуки', 'Смартфони', 'Планшети', 'Аксесуари'],
     'ol' => ['Виберіть товар', 'Оформіть замовлення', 'Отримайте доставку']
 ];
+
 $image_url = './photo-laptop.jpg';
 $image_map_areas = [
     ['shape' => 'circle', 'coords' => '300,200,100', 'href' => 'index.php', 'alt' => 'Головна'],
     ['shape' => 'circle', 'coords' => '150,300,50', 'href' => 'page2.php', 'alt' => 'Каталог'],
     ['shape' => 'circle', 'coords' => '500,300,100', 'href' => 'page4.php', 'alt' => 'Контакти'],
 ];
-
-// Отримуємо ВСІ дані з БД в один запит
-$db_query_start = microtime(true);
-$stmt = $pdo->query("SELECT element_id, content_text FROM content");
-$db_content = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
-$db_query_time = microtime(true) - $db_query_start;
-
-
-// Створюємо HELPER-функцію
-// Вона буде перевіряти, чи є значення в БД, і якщо ні - повертатиме значення за замовчуванням
-function getContent($id, $default_text = '') {
-    global $db_content;
-    return $db_content[$id] ?? $default_text;
-}

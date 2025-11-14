@@ -1,0 +1,150 @@
+/* --- Стилі для сторінки створення (page_creator.php) --- */
+
+.toast-fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background: #f9f9f9;
+    position: relative;
+    cursor: grab;
+}
+/* Стиль для елемента, який перетягують */
+.toast-fieldset.dragging {
+    opacity: 0.5;
+    background: #e0e0e0;
+}
+
+.toast-fieldset legend {
+    font-weight: bold;
+    color: #555;
+    padding: 0 5px;
+}
+
+.toast-fieldset div {
+    margin-bottom: 10px;
+}
+
+.toast-fieldset label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.toast-fieldset input[type="text"],
+.toast-fieldset textarea {
+    width: 95%; /* Трохи менше 100% через padding */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+.toast-fieldset textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.remove-toast-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+.remove-toast-btn:hover {
+    background: #e04a4a;
+}
+
+.toast-controls button {
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-toast-btn {
+    background-color: #28a745;
+    color: white;
+}
+#save-toasts-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- Стилі для сторінки перегляду (page_viewer.php) --- */
+
+#toast-viewer-container {
+    /* Цей контейнер можна стилізувати як "toast container" у Bootstrap */
+    position: fixed;
+    top: 80px; /* Відступ від меню */
+    right: 20px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 350px; /* Фіксована ширина для toast */
+}
+
+/* Наш кастомний toast, що імітує Bootstrap */
+.custom-toast {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    opacity: 1; /* За замовчуванням видимий */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Анімація зникнення */
+.custom-toast.fading-out {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.custom-toast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.custom-toast-header strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.custom-toast-header .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #000;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+}
+.custom-toast-header .close-btn:hover {
+    opacity: 0.8;
+}
+
+.custom-toast-body {
+    padding: 15px;
+    color: #212529;
+}
